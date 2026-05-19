@@ -48,6 +48,13 @@ If the user asks about Python transcript processing, YouTube transcript logic, o
 2. Remember the desktop app calls this repo through its venv and `PYTHONPATH`.
 3. Do not commit unrelated local experiments, generated transcripts, venvs, or secrets.
 
+If the user asks about AI cleaning, OpenAI API usage, prompts, models, token usage, or prompt changes:
+
+1. Read `references/ai-usage.md`.
+2. Locate the real prompt and API call in the desktop app/runtime source.
+3. Treat app code as the source of truth; do not duplicate long prompts into this skill.
+4. Verify prompt changes with a small before/after run when possible.
+
 If the user asks about PDF translation in the app:
 
 1. Use desktop app source first.
@@ -140,6 +147,7 @@ manifest.md
 Read only when needed:
 
 - `references/app-architecture.md`: app/source/runtime map and command flow.
+- `references/ai-usage.md`: OpenAI/API usage map, prompt locations, models, modes, and verification checklist.
 - `references/pdf-translation.md`: translation modes, output contract, and one-off mirror PDF guidance.
 
 ## Scripts

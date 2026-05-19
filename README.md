@@ -14,6 +14,7 @@ It is inspired by the style of workflow skills such as Cuimao Translator: the sk
 - YouTube transcript to EPUB/PDF workflows
 - PDF translation workflow
 - Cuimao-style translation flow: extract, analyze, glossary, chunk translation, optional refinement
+- OpenAI/API usage map for transcript cleaning, transcript translation, and PDF translation
 - Output folder conventions
 - Verification and Git workflow
 
@@ -83,6 +84,7 @@ podcast-ebook/
   README.md
   references/
     app-architecture.md
+    ai-usage.md
     pdf-translation.md
   scripts/
     check_app.sh

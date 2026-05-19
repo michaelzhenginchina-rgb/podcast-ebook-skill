@@ -9,6 +9,7 @@ It helps Codex, Claude Code, or another skill-aware coding assistant understand:
 - the YouTube transcript to ebook workflow
 - the PDF translation workflow
 - the Cuimao-style translation process used by the app
+- where OpenAI/API-backed cleaning and translation prompts live
 - the expected verification and Git workflow
 
 ## Install For Codex
@@ -56,6 +57,7 @@ These scripts do not modify files. They print the current repo state, installed 
 ```text
 SKILL.md
 references/app-architecture.md
+references/ai-usage.md
 references/pdf-translation.md
 scripts/check_app.sh
 scripts/check_runtime.sh
