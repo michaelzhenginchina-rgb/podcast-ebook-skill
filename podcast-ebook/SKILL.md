@@ -16,21 +16,22 @@ Desktop app source:
 this repository
 
 Python runtime used by the app:
-~/podcast-to-ebook-repo
+configured by PODCAST_EBOOK_RUNTIME_REPO
 
 Installed macOS app:
-~/Applications/Podcast Ebook.app
+configured by PODCAST_EBOOK_APP_BIN
 
 Default app output:
-~/Desktop/Retrona_Tools_Output/podcast-ebooks
+configured by PODCAST_EBOOK_OUTPUT_DIR
 ```
 
 These paths can vary by machine. Prefer environment variables when running helper scripts:
 
 ```bash
 PODCAST_EBOOK_DESKTOP_REPO=/path/to/podcast-ebook-desktop
-PODCAST_EBOOK_RUNTIME_REPO=/path/to/podcast-to-ebook-repo
+PODCAST_EBOOK_RUNTIME_REPO=/path/to/runtime-repo
 PODCAST_EBOOK_APP_BIN="/path/to/Podcast Ebook.app/Contents/MacOS/podcast-ebook-desktop"
+PODCAST_EBOOK_OUTPUT_DIR=/path/to/output-folder
 ```
 
 ## Decision Tree
@@ -51,7 +52,7 @@ If the user asks about PDF translation in the app:
 
 1. Use desktop app source first.
 2. The app-side runner is `scripts/pdf_translation_runner.py`.
-3. Translation output lives under `Desktop/Retrona_Tools_Output/podcast-ebooks/pdf_translation_*`.
+3. Translation output lives under the configured output folder, usually `podcast-ebooks/pdf_translation_*`.
 4. The runtime repo must have `pypdf` available.
 
 If the user asks for a one-off “mirror PDF” matching a specific source PDF:
@@ -83,7 +84,7 @@ cd src-tauri && cargo check
 If the local runtime repo is available, prefer its venv for Python checks:
 
 ```bash
-~/podcast-to-ebook-repo/venv/bin/python -m py_compile scripts/*.py
+"$PODCAST_EBOOK_RUNTIME_REPO/venv/bin/python" -m py_compile scripts/*.py
 ```
 
 To install an updated local app after a release build:
@@ -91,8 +92,8 @@ To install an updated local app after a release build:
 ```bash
 cd src-tauri
 cargo build --release
-cp target/release/podcast-ebook-desktop "$HOME/Applications/Podcast Ebook.app/Contents/MacOS/podcast-ebook-desktop"
-open "$HOME/Applications/Podcast Ebook.app"
+cp target/release/podcast-ebook-desktop "$PODCAST_EBOOK_APP_BIN"
+open "$(dirname "$(dirname "$PODCAST_EBOOK_APP_BIN")")"
 ```
 
 ## Git Expectations
@@ -101,7 +102,7 @@ Use `codex/` branches for new AI-agent work unless the repo has a different bran
 
 ```text
 podcast-ebook-desktop: app UI, Tauri commands, desktop runners, app build docs
-podcast-to-ebook-repo: runtime dependencies and core Python transcript code
+runtime repo: dependencies and core Python transcript code
 ```
 
 Do not stage generated books, translations, `.env`, API keys, venvs, transcripts, or large media unless the user explicitly asks.

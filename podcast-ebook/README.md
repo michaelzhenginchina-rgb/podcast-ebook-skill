@@ -24,20 +24,22 @@ Then start a new Codex session and ask for `podcast-ebook` work. The skill shoul
 
 ## Configure Local Paths
 
-The helper scripts work with common defaults:
+The helper scripts are path-configurable:
 
 ```text
-desktop repo: current git repo
-runtime repo: ~/podcast-to-ebook-repo
-app binary:   ~/Applications/Podcast Ebook.app/Contents/MacOS/podcast-ebook-desktop
+PODCAST_EBOOK_DESKTOP_REPO
+PODCAST_EBOOK_RUNTIME_REPO
+PODCAST_EBOOK_APP_BIN
+PODCAST_EBOOK_RUNTIME_PYTHON
+PODCAST_EBOOK_OUTPUT_DIR
 ```
-
-Override them when your machine uses different paths:
 
 ```bash
 export PODCAST_EBOOK_DESKTOP_REPO="/path/to/podcast-ebook-desktop"
-export PODCAST_EBOOK_RUNTIME_REPO="/path/to/podcast-to-ebook-repo"
+export PODCAST_EBOOK_RUNTIME_REPO="/path/to/runtime-repo"
 export PODCAST_EBOOK_APP_BIN="/path/to/Podcast Ebook.app/Contents/MacOS/podcast-ebook-desktop"
+export PODCAST_EBOOK_RUNTIME_PYTHON="/path/to/python"
+export PODCAST_EBOOK_OUTPUT_DIR="/path/to/output-folder"
 ```
 
 ## Quick Checks

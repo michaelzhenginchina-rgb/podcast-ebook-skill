@@ -19,12 +19,13 @@ It is inspired by the style of workflow skills such as Cuimao Translator: the sk
 
 ## Install For Codex
 
-Clone this repo, then copy the skill folder into your Codex skills directory:
+Clone this repo, then copy the skill folder into your Codex skills directory.
+Replace `<repo-url>` with the URL of the repo or fork you want to install from:
 
 ```bash
-git clone https://github.com/michaelzhenginchina-rgb/podcast-ebook-skill.git
+git clone <repo-url>
 mkdir -p ~/.codex/skills
-cp -R podcast-ebook-skill/podcast-ebook ~/.codex/skills/podcast-ebook
+cp -R <repo-folder>/podcast-ebook ~/.codex/skills/podcast-ebook
 ```
 
 Start a new Codex session and refer to the skill as:
@@ -45,21 +46,22 @@ podcast-ebook/SKILL.md
 
 ## Configure Local Paths
 
-The helper scripts use common defaults:
+The helper scripts are path-configurable. Set these variables for your own machine:
 
 ```text
-desktop repo: current git repo
-runtime repo: ~/podcast-to-ebook-repo
-app binary:   ~/Applications/Podcast Ebook.app/Contents/MacOS/podcast-ebook-desktop
+PODCAST_EBOOK_DESKTOP_REPO
+PODCAST_EBOOK_RUNTIME_REPO
+PODCAST_EBOOK_APP_BIN
+PODCAST_EBOOK_RUNTIME_PYTHON
+PODCAST_EBOOK_OUTPUT_DIR
 ```
-
-Override them when your machine uses different paths:
 
 ```bash
 export PODCAST_EBOOK_DESKTOP_REPO="/path/to/podcast-ebook-desktop"
-export PODCAST_EBOOK_RUNTIME_REPO="/path/to/podcast-to-ebook-repo"
+export PODCAST_EBOOK_RUNTIME_REPO="/path/to/runtime-repo"
 export PODCAST_EBOOK_APP_BIN="/path/to/Podcast Ebook.app/Contents/MacOS/podcast-ebook-desktop"
 export PODCAST_EBOOK_RUNTIME_PYTHON="/path/to/python"
+export PODCAST_EBOOK_OUTPUT_DIR="/path/to/output-folder"
 ```
 
 ## Quick Checks
@@ -67,8 +69,8 @@ export PODCAST_EBOOK_RUNTIME_PYTHON="/path/to/python"
 From a Podcast Ebook desktop app repo:
 
 ```bash
-~/.codex/skills/podcast-ebook/scripts/check_app.sh
-~/.codex/skills/podcast-ebook/scripts/check_runtime.sh
+podcast-ebook/scripts/check_app.sh
+podcast-ebook/scripts/check_runtime.sh
 ```
 
 These scripts do not modify files. They print repo state, installed app status, and runtime dependency availability.

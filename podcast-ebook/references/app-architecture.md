@@ -29,14 +29,14 @@ README.md
 The desktop app expects a separate Python runtime repository. A common local path is:
 
 ```text
-~/podcast-to-ebook-repo
+configured by PODCAST_EBOOK_RUNTIME_REPO
 ```
 
 The app usually uses:
 
 ```text
-~/podcast-to-ebook-repo/venv/bin/python
-~/podcast-to-ebook-repo/.env
+$PODCAST_EBOOK_RUNTIME_REPO/venv/bin/python
+$PODCAST_EBOOK_RUNTIME_REPO/.env
 ```
 
 The app sets `PYTHONPATH` to the runtime repo so app-side scripts can import runtime modules.
@@ -48,7 +48,7 @@ Do not assume dependencies installed in a different project venv are available t
 Default output:
 
 ```text
-~/Desktop/Retrona_Tools_Output/podcast-ebooks
+configured by PODCAST_EBOOK_OUTPUT_DIR
 ```
 
 YouTube ebook runs:
@@ -76,7 +76,7 @@ cd src-tauri && cargo check
 If the runtime venv exists, use it for Python checks:
 
 ```bash
-~/podcast-to-ebook-repo/venv/bin/python -m py_compile scripts/pdf_translation_runner.py scripts/podcast_desktop_runner.py
+"$PODCAST_EBOOK_RUNTIME_REPO/venv/bin/python" -m py_compile scripts/pdf_translation_runner.py scripts/podcast_desktop_runner.py
 ```
 
 Install a local app binary after a release build:
@@ -84,5 +84,5 @@ Install a local app binary after a release build:
 ```bash
 cd src-tauri
 cargo build --release
-cp target/release/podcast-ebook-desktop "$HOME/Applications/Podcast Ebook.app/Contents/MacOS/podcast-ebook-desktop"
+cp target/release/podcast-ebook-desktop "$PODCAST_EBOOK_APP_BIN"
 ```

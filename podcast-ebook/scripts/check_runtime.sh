@@ -1,12 +1,18 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-RUNTIME="${PODCAST_EBOOK_RUNTIME_REPO:-$HOME/podcast-to-ebook-repo}"
+RUNTIME="${PODCAST_EBOOK_RUNTIME_REPO:-}"
 PY="${PODCAST_EBOOK_RUNTIME_PYTHON:-$RUNTIME/venv/bin/python}"
+
+if [ -z "$RUNTIME" ]; then
+  echo "runtime repo not configured"
+  echo "Set PODCAST_EBOOK_RUNTIME_REPO=/path/to/runtime-repo"
+  exit 1
+fi
 
 if [ ! -d "$RUNTIME" ]; then
   echo "runtime repo not found: $RUNTIME"
-  echo "Set PODCAST_EBOOK_RUNTIME_REPO=/path/to/podcast-to-ebook-repo"
+  echo "Set PODCAST_EBOOK_RUNTIME_REPO=/path/to/runtime-repo"
   exit 1
 fi
 
